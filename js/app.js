@@ -204,7 +204,7 @@ var viewModel = function(){
 		for(var i = 0; i < List.length; i++){
 			for(var j = 0; j < self.locationList().length; j++){
 				if(self.locationList()[j].locationName() == List[i].innerText){
-					self.addMarker(self.locationList()[j]);
+					self.createMarker(self.locationList()[j]);
 				}
 
 			}
