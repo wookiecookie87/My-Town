@@ -55,4 +55,11 @@ ul li:hover {
     background: gray;
 }
 
-/*AIzaSyBPyCSSYJRYMcIX5z6rnmH7AjLDl1UUu2Y*/
+@media only screen and (min-width: 200px) and (max-width: 750px){
+    ul li {
+        padding: 10px 0;
+        height: 50px;
+        font-size: 12px;
+        word-break: break-word;
+    }
+}

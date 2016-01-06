@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>My Neighborhood</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -16,28 +16,26 @@
 					<input type="text" class="search-text" placeholder="Enter search text"data-bind='value:searchText, valueUpdate: "afterkeydown", event:{keyup: filterList}' />
 				</div>
 			</form>	
-			<div class="col-xs-4 col-lg-2 search-list">
+			<div class="col-xs-3 col-lg-2 search-list">
 				<ul data-bind="foreach:locationList">
-					<li data-bind="text: locationName, click: $parent.showLocation"></li>
+					<li data-bind="text: locationName, click: $parent.showLocation, visible:filter"></li>
 				</ul>
 			</div>
-			<div class="col-xs-8 col-lg-10 map" id="map"></div>
+			<div class="col-xs-9 col-lg-10 map" id="map"></div>
 		</div>
 	</div>	
 </body>
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPyCSSYJRYMcIX5z6rnmH7AjLDl1UUu2Y&callback=mapInit" onerror="googleError()" async defer></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript">
+		function mapInit(){
+			ko.applyBindings(new viewModel());
+		}
+
+		function googleError(){
+			alert("google map load fail.");
+		}
+	</script>
 </html>
-
-
-
-<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPyCSSYJRYMcIX5z6rnmH7AjLDl1UUu2Y&signed_in=true&callback=initialize"></script> -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPyCSSYJRYMcIX5z6rnmH7AjLDl1UUu2Y&callback=mapInit" async defer></script>
-<script type="text/javascript" src="js/app.js"></script>
-
-<script type="text/javascript">
-	function mapInit(){
-		ko.applyBindings(new viewModel());
-	}
-</script>
-<!-- https://instagram.com/oauth/authorize/?client_id=66f23304df1143efb8acd42113ddf786&redirect_uri=http://localhost:8080&response_type=token -->
