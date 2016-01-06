@@ -60,6 +60,6 @@ ul li:hover {
         padding: 10px 0;
         height: 50px;
         font-size: 12px;
-        word-break: break-word;
+        word-break: break-all;
     }
 }

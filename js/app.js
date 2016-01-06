@@ -86,7 +86,7 @@ var viewModel = function(){
 		var setData = "";
 
 		var instaRequestTimeout = setTimeout(function(){
-			alert("Udable to load data");
+			alert("Unable to load data");
 		}, 2000);
 
 		$.ajax({
@@ -104,12 +104,15 @@ var viewModel = function(){
 				items.forEach(function(item){
 					setData += "	<tr>";
 					setData += "		<td>"+item.venue.name+"</td>";
-					setData += "		<td>"+item.venue.location.address+"</td>";
+					if(item.venue.location.address){
+						setData += "		<td>"+item.venue.location.address+"</td>";
+					}else{
+						setData += "		<td>Address not found</td>";
+					}
 					setData += "	</tr>";
 				});
 				setData += "	</table>";
 				setData += "    </div></div>";
-				//$("#reco-table").html(setData);
 				$("#reco-table").css("height", "120px");
 				$("#reco-table").css("overflow-y", "scroll");
 				infoWindow.setContent(setData);
